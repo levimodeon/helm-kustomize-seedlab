@@ -1,5 +1,5 @@
 # namespace 지정
-namespace: ingress-external
+namespace: monitoring
 
 resources:
   - ./namespace.yaml
@@ -11,9 +11,9 @@ helmGlobals:
 
 # Kustomize가 Helm 차트를 직접 렌더링하도록 설정
 helmCharts:
-  - name: ingress-nginx
-    version: 4.12.3
-    releaseName: ingress
-    namespace: ingress-external
+  - name: prometheus
+    version: 27.20.1
+    releaseName: prometheus
+    namespace: monitoring
     valuesFile: values.yaml
     includeCRDs: false
