@@ -124,7 +124,7 @@ controller:
   # We do not support namespaced IngressClasses, yet, so a ClusterRole and a ClusterRoleBinding is required.
   ingressClassResource:
     # -- Name of the IngressClass
-    name: ingress-external
+    name: ingress-internal
     # -- Create the IngressClass or not
     enabled: true
     # -- If true, Ingresses without `ingressClassName` get assigned to this IngressClass on creation.
@@ -155,7 +155,7 @@ controller:
     #   name: external-lb
   # -- For backwards compatibility with ingress.class annotation, use ingressClass.
   # Algorithm is as follows, first ingressClassName is considered, if not present, controller looks for ingress.class annotation
-  ingressClass: ingress-external
+  ingressClass: ingress-internal
   # -- Labels to add to the pod container metadata
   podLabels: {}
   #  key: value
@@ -205,7 +205,7 @@ controller:
   maxmindLicenseKey: ""
   # -- Additional command line arguments to pass to Ingress-Nginx Controller
   # E.g. to specify the default SSL certificate you can use
-  extraArgs:
+  extraArgs: 
     watch-ingress-without-class: "false"
   ## extraArgs:
   ##   default-ssl-certificate: "<namespace>/<secret_name>"
@@ -487,9 +487,10 @@ controller:
     enabled: true
     external:
       # -- Enable the external controller service or not. Useful for internal-only deployments.
-      enabled: true
+      enabled: false
     # -- Annotations to be added to the external controller service. See `controller.service.internal.annotations` for annotations to be added to the internal controller service.
     annotations:
+      service.beta.kubernetes.io/azure-load-balancer-internal: "true"
       service.beta.kubernetes.io/azure-load-balancer-health-probe-request-path: /healthz
 
     # -- Labels to be added to both controller services.
@@ -569,14 +570,16 @@ controller:
       udp: {}
     internal:
       # -- Enable the internal controller service or not. Remember to configure `controller.service.internal.annotations` when enabling this.
-      enabled: false
+      enabled: true
       # -- Annotations to be added to the internal controller service. Mandatory for the internal controller service to be created. Varies with the cloud service.
       # Ref: https://kubernetes.io/docs/concepts/services-networking/service/#internal-load-balancer
-      annotations: {}
+      annotations:
       # -- Type of the internal controller service.
       # Defaults to the value of `controller.service.type`.
       # Ref: https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types
-      type: ""
+        service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+        service.beta.kubernetes.io/azure-load-balancer-health-probe-request-path: /healthz
+      type: LoadBalancer
       # -- Pre-defined cluster internal IP address of the internal controller service. Take care of collisions with existing services.
       # This value is immutable. Set once, it can not be changed without deleting and re-creating the service.
       # Ref: https://kubernetes.io/docs/concepts/services-networking/service/#choosing-your-own-ip-address
