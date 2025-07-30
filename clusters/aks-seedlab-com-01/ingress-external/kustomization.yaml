@@ -1,0 +1,19 @@
+# namespace 지정
+namespace: ingress-external
+
+resources:
+  - ./namespace.yaml
+
+# Helm 차트가 지정된 디렉토리 경로 지정
+# chartHome은 Helm 플러그인에서 차트(예: Chart.yaml, values.yaml 등)를 찾을 경로
+helmGlobals:
+  chartHome: ../../../base
+
+# Kustomize가 Helm 차트를 직접 렌더링하도록 설정
+helmCharts:
+  - name: ingress-nginx
+    version: 4.12.3
+    releaseName: ingress
+    namespace: ingress-external
+    valuesFile: values.yaml
+    includeCRDs: false
