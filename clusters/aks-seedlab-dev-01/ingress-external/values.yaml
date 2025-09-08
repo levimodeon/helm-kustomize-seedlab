@@ -137,7 +137,7 @@ controller:
     # -- Controller of the IngressClass. An Ingress Controller looks for IngressClasses it should reconcile by this value.
     # This value is also being set as the `--controller-class` argument of this Ingress Controller.
     # Ref: https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-class
-    controllerValue: k8s.io/ingress-nginx
+    controllerValue: k8s.io/ingress-nginx-external
     # -- Aliases of this IngressClass. Creates copies with identical settings but the respective alias as name.
     # Useful for development environments with only one Ingress Controller but production-like Ingress resources.
     # `default` gets enabled on the original IngressClass only.
@@ -178,7 +178,7 @@ controller:
     enabled: true
     # -- Allows overriding of the publish service to bind to
     # Must be <namespace>/<service_name>
-    pathOverride: ""
+    pathOverride: ingress-external/ingress-ingress-nginx-controller
   # Limit the scope of the controller to a specific namespace
   scope:
     # -- Enable 'scope' or not
