@@ -667,7 +667,7 @@ datasources: {}
    datasources:
    - name: Prometheus-com
      type: prometheus
-     url: http://:80
+     url: http://10.100.0.6:80
      access: proxy
      isDefault: false
    - name: Prometheus-dev
