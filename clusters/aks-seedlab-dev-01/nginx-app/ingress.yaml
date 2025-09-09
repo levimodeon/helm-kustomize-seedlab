@@ -9,6 +9,7 @@ metadata:
     nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
+  ingressClassName: ingress-external
   rules:
   - host: seedlab.dev.kubepia.net
     http:
