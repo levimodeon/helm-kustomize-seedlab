@@ -11,7 +11,7 @@ metadata:
 spec:
   ingressClassName: ingress-external
   rules:
-  - host: seedlab.dev.kubepia.net
+  - host: seedlab.4.230.152.228.nip.io
     http:
       paths:
       - path: /
