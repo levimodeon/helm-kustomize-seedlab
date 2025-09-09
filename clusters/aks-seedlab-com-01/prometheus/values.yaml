@@ -761,7 +761,7 @@ server:
     servicePort: 80
     sessionAffinity: None
     # type: ClusterIP
-    type: Loadbalancer
+    type: LoadBalancer
     annotations:
       # service.beta.kubernetes.io/azure-load-balancer-internal: "true"
     ## externalTrafficPolicy is applicable to service with externally-facing addresses (NodePorts, ExternalIPs, and LoadBalancer IPs)
