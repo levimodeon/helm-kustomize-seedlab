@@ -2392,7 +2392,7 @@ server:
 
     # -- Argo CD server hostname
     # @default -- `""` (defaults to global.domain)
-    hostname: "argocd.20.249.145.150.nip.io"
+    hostname: "argocd.20.249.106.240.nip.io"
 
     # -- The path to Argo CD server
     path: /
