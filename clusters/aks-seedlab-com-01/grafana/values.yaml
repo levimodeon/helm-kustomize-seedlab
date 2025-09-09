@@ -293,7 +293,7 @@ ingress:
   pathType: Prefix
 
   hosts:
-    - monitoring.grafana.20.249.104.154.nip.io
+    - monitoring.grafana.4.230.152.228.nip.io
   ## Extra paths to prepend to every host configuration. This is useful when working with annotation based services.
   extraPaths: []
   # - path: /*

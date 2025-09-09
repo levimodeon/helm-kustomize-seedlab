@@ -397,7 +397,7 @@ server:
     ## Must be provided if Ingress is enabled
     ##
     hosts: 
-      - monitoring.prometheus.20.249.104.154.nip.io
+      - monitoring.prometheus.4.230.152.228.nip.io
     #   - prometheus.domain.com
     #   - domain.com/prometheus
 
