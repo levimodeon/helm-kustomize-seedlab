@@ -9,10 +9,10 @@ global:
 ## Overrides for generated resource names
 # See templates/_helpers.tpl
 # nameOverride:
-# fullnameOverride:
+fullnameOverride: ingress-internal
 
 # -- Override the deployment namespace; defaults to .Release.Namespace
-namespaceOverride: ""
+namespaceOverride: ingress-internal
 ## Labels to apply to all resources
 ##
 commonLabels: {}
@@ -830,7 +830,7 @@ controller:
         # -- Create a service account or not
         create: true
         # -- Custom service account name
-        name: ""
+        name: ingress-internal-sa
         # -- Auto-mount service account token or not
         automountServiceAccountToken: true
     # Use certmanager to generate webhook certs

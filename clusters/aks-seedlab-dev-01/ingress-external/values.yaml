@@ -9,10 +9,10 @@ global:
 ## Overrides for generated resource names
 # See templates/_helpers.tpl
 # nameOverride:
-# fullnameOverride:
+fullnameOverride: ingress-external
 
 # -- Override the deployment namespace; defaults to .Release.Namespace
-namespaceOverride: ""
+namespaceOverride: ingress-external
 ## Labels to apply to all resources
 ##
 commonLabels: {}
@@ -827,7 +827,7 @@ controller:
         # -- Create a service account or not
         create: true
         # -- Custom service account name
-        name: ""
+        name: ingress-external-sa
         # -- Auto-mount service account token or not
         automountServiceAccountToken: true
     # Use certmanager to generate webhook certs
