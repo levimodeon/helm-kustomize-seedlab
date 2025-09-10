@@ -178,7 +178,7 @@ controller:
     enabled: true
     # -- Allows overriding of the publish service to bind to
     # Must be <namespace>/<service_name>
-    pathOverride: ingress-external/ingress-ingress-nginx-controller
+    pathOverride: ingress-external/ingress-external-controller
   # Limit the scope of the controller to a specific namespace
   scope:
     # -- Enable 'scope' or not

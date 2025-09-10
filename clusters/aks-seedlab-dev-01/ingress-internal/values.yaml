@@ -178,7 +178,7 @@ controller:
     enabled: true
     # -- Allows overriding of the publish service to bind to
     # Must be <namespace>/<service_name>
-    pathOverride: ""
+    pathOverride: ingress-internal/ingress-internal-controller-internal
   # Limit the scope of the controller to a specific namespace
   scope:
     # -- Enable 'scope' or not
