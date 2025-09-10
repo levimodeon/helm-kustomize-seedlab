@@ -739,7 +739,7 @@ controller:
     #         key: FOO
     #         name: secret-resource
     # -- Admission Webhook failure policy to use
-    failurePolicy: Fail
+    failurePolicy: Ignore
     # timeoutSeconds: 10
     port: 8443
     certificate: "/usr/local/certificates/cert"
