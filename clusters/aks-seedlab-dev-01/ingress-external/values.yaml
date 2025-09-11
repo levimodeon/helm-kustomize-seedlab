@@ -9,10 +9,10 @@ global:
 ## Overrides for generated resource names
 # See templates/_helpers.tpl
 # nameOverride:
-fullnameOverride: ingress-external
+fullnameOverride: ""
 
 # -- Override the deployment namespace; defaults to .Release.Namespace
-namespaceOverride: ingress-external
+namespaceOverride: ""
 ## Labels to apply to all resources
 ##
 commonLabels: {}
@@ -130,7 +130,7 @@ controller:
     # -- If true, Ingresses without `ingressClassName` get assigned to this IngressClass on creation.
     # Ingress creation gets rejected if there are multiple default IngressClasses.
     # Ref: https://kubernetes.io/docs/concepts/services-networking/ingress/#default-ingress-class
-    default: false
+    default: true
     # -- Annotations to be added to the IngressClass resource.
     annotations: {}
     
@@ -178,7 +178,7 @@ controller:
     enabled: true
     # -- Allows overriding of the publish service to bind to
     # Must be <namespace>/<service_name>
-    pathOverride: ingress-external/ingress-external-controller
+    pathOverride: ""
   # Limit the scope of the controller to a specific namespace
   scope:
     # -- Enable 'scope' or not
