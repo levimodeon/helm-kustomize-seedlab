@@ -130,14 +130,14 @@ controller:
     # -- If true, Ingresses without `ingressClassName` get assigned to this IngressClass on creation.
     # Ingress creation gets rejected if there are multiple default IngressClasses.
     # Ref: https://kubernetes.io/docs/concepts/services-networking/ingress/#default-ingress-class
-    default: true
+    default: false
     # -- Annotations to be added to the IngressClass resource.
     annotations: {}
     
     # -- Controller of the IngressClass. An Ingress Controller looks for IngressClasses it should reconcile by this value.
     # This value is also being set as the `--controller-class` argument of this Ingress Controller.
     # Ref: https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-class
-    controllerValue: k8s.io/ingress-nginx-external
+    controllerValue: k8s.io/ingress-external
     # -- Aliases of this IngressClass. Creates copies with identical settings but the respective alias as name.
     # Useful for development environments with only one Ingress Controller but production-like Ingress resources.
     # `default` gets enabled on the original IngressClass only.
@@ -491,6 +491,7 @@ controller:
     # -- Annotations to be added to the external controller service. See `controller.service.internal.annotations` for annotations to be added to the internal controller service.
     annotations:
       service.beta.kubernetes.io/azure-load-balancer-health-probe-request-path: /healthz
+      service.beta.kubernetes.io/azure-load-balancer-internal: "false"
 
     # -- Labels to be added to both controller services.
     labels: {}
@@ -722,7 +723,7 @@ controller:
   # mounted volume.
 
   admissionWebhooks:
-    name: admission
+    name: external-admission
     annotations: {}
     # ignore-check.kube-linter.io/no-read-only-rootfs: "This deployment needs write access to root filesystem".
 
