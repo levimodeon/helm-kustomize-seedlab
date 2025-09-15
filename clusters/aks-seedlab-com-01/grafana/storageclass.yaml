@@ -7,6 +7,7 @@ parameters:
   skuName: Standard_LRS
   location: koreacentral
   storageAccount: aksseedlabcom01
+  resourceGroup: rg-seedlab-com-01
 reclaimPolicy: Retain
 volumeBindingMode: Immediate
 allowVolumeExpansion: true
