@@ -1,0 +1,19 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: azurefile-csi
+provisioner: file.csi.azure.com
+parameters:
+  skuName: Standard_LRS
+  location: koreacentral
+  storageAccount: aksseedlabcom01
+reclaimPolicy: Retain
+volumeBindingMode: Immediate
+allowVolumeExpansion: true
+mountOptions:                  # 권한/락 이슈 완화용 권장 옵션
+  - dir_mode=0777
+  - file_mode=0777
+  - mfsymlinks
+  - cache=strict
+  - actimeo=30
+  - nobrl
