@@ -932,7 +932,8 @@ serverFiles:
             regex: (.+)
             target_label: __metrics_path__
             replacement: /api/v1/nodes/$1/proxy/metrics
-
+          - target_label: cluster
+            replacement: aks-seedlab-com-01
 
       - job_name: 'kubernetes-nodes-cadvisor'
 
@@ -1092,6 +1093,8 @@ serverFiles:
           - source_labels: [__meta_kubernetes_pod_node_name]
             action: replace
             target_label: node
+          - target_label: cluster
+            replacement: aks-seedlab-com-01
 
       - job_name: 'prometheus-pushgateway'
         honor_labels: true
