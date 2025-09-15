@@ -2,8 +2,7 @@
 namespace: monitoring
 
 resources:
-  - ./namespace.yaml
-  - ./secret.yaml
+  - ./*.yaml
 
 # Helm 차트가 지정된 디렉토리 경로 지정
 # chartHome은 Helm 플러그인에서 차트(예: Chart.yaml, values.yaml 등)를 찾을 경로
