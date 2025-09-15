@@ -846,6 +846,17 @@ serverFiles:
         static_configs:
           - targets:
             - localhost:9090
+        relabel_configs:
+        - target_label: cluster
+          replacement: aks-seedlab-com-01
+      - job_name: prometheus-dev
+        metrics_path: /federate
+        static_configs:
+          - targets:
+            - 10.25.0.8:80
+        relabel_configs:
+        - target_label: cluster
+          replacement: aks-seedlab-dev-01
 
       # A scrape configuration for running Prometheus on a Kubernetes cluster.
       # This uses separate scrape configs for cluster components (i.e. API server, node)
@@ -894,8 +905,7 @@ serverFiles:
           - source_labels: [__meta_kubernetes_namespace, __meta_kubernetes_service_name, __meta_kubernetes_endpoint_port_name]
             action: keep
             regex: default;kubernetes;https
-          - target_label: cluster
-            replacement: aks-seedlab-com-01
+
 
       - job_name: 'kubernetes-nodes'
 
@@ -932,8 +942,7 @@ serverFiles:
             regex: (.+)
             target_label: __metrics_path__
             replacement: /api/v1/nodes/$1/proxy/metrics
-          - target_label: cluster
-            replacement: aks-seedlab-com-01
+
 
       - job_name: 'kubernetes-nodes-cadvisor'
 
@@ -975,8 +984,7 @@ serverFiles:
             regex: (.+)
             target_label: __metrics_path__
             replacement: /api/v1/nodes/$1/proxy/metrics/cadvisor
-          - target_label: cluster
-            replacement: aks-seedlab-com-01
+
         # Metric relabel configs to apply to samples before ingestion.
         # [Metric Relabeling](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs)
         # metric_relabel_configs:
@@ -1037,8 +1045,7 @@ serverFiles:
           - source_labels: [__meta_kubernetes_pod_node_name]
             action: replace
             target_label: node
-          - target_label: cluster
-            replacement: aks-seedlab-com-01
+
       # Scrape config for slow service endpoints; same as above, but with a larger
       # timeout and a larger interval
       #
@@ -1093,8 +1100,7 @@ serverFiles:
           - source_labels: [__meta_kubernetes_pod_node_name]
             action: replace
             target_label: node
-          - target_label: cluster
-            replacement: aks-seedlab-com-01
+
 
       - job_name: 'prometheus-pushgateway'
         honor_labels: true
@@ -1106,8 +1112,7 @@ serverFiles:
           - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_probe]
             action: keep
             regex: pushgateway
-          - target_label: cluster
-            replacement: aks-seedlab-com-01
+
       # Example scrape config for probing services via the Blackbox Exporter.
       #
       # The relabeling allows the actual service scrape endpoint to be configured
@@ -1140,8 +1145,7 @@ serverFiles:
             target_label: namespace
           - source_labels: [__meta_kubernetes_service_name]
             target_label: service
-          - target_label: cluster
-            replacement: aks-seedlab-com-01
+
       # Example scrape config for pods
       #
       # The relabeling allows the actual pod scrape endpoint to be configured via the
@@ -1201,8 +1205,7 @@ serverFiles:
           - source_labels: [__meta_kubernetes_pod_node_name]
             action: replace
             target_label: node
-          - target_label: cluster
-            replacement: aks-seedlab-com-01
+
       # Example Scrape config for pods which should be scraped slower. An useful example
       # would be stackriver-exporter which queries an API on every scrape of the pod
       #
@@ -1262,8 +1265,7 @@ serverFiles:
           - source_labels: [__meta_kubernetes_pod_node_name]
             action: replace
             target_label: node
-          - target_label: cluster
-            replacement: aks-seedlab-com-01
+
 # adds additional scrape configs to prometheus.yml
 # must be a string so you have to add a | after extraScrapeConfigs:
 # example adds prometheus-blackbox-exporter scrape config
