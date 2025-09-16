@@ -846,6 +846,9 @@ serverFiles:
         static_configs:
           - targets:
             - http://10.100.0.6:80
+        params:
+          'match[]':
+            - '{__name__=~".*"}' 
         relabel_configs:
         - target_label: cluster
           replacement: aks-seedlab-com-01
