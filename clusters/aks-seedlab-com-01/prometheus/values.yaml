@@ -853,21 +853,7 @@ serverFiles:
         metrics_path: /federate
         params:
           'match[]':
-            - '{job="prometheus"}'
-            - '{__name__=~"job:.*"}'
-            - '{__name__=~"up"}'
-            - '{__name__=~"container_memory_usage_bytes"}'
-            - '{__name__=~"container_cpu_usage_seconds_total"}'
-            - '{__name__=~"container_network_receive_bytes_total"}'
-            - '{__name__=~"container_network_transmit_bytes_total"}'
-            - '{__name__=~"node_filesystem_avail_bytes"}'
-            - '{__name__=~"node_filesystem_size_bytes"}'
-            - '{__name__=~"node_memory_MemAvailable_bytes"}'
-            - '{__name__=~"node_memory_MemTotal_bytes"}'
-            - '{__name__=~"node_cpu_seconds_total"}'
-            - '{__name__=~"node_load1"}'
-            - '{__name__=~"node_load5"}'
-            - '{__name__=~"node_load15"}' 
+            - '{__name__=~".*"}' 
         static_configs:
           - targets:
             - 10.25.0.8:80
