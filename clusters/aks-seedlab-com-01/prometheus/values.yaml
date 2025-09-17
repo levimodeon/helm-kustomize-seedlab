@@ -491,7 +491,8 @@ server:
   ## Node labels for Prometheus server pod assignment
   ## Ref: https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/
   ##
-  nodeSelector: {}
+  nodeSelector: 
+    agentpool: ingress
 
   ## Pod affinity
   ##
